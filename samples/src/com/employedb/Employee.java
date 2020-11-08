@@ -1,6 +1,6 @@
 package com.employedb;
 
-import java.util.Comparator;//testing
+import java.util.Comparator;
 
 public class Employee implements Comparable<Employee> {
 
@@ -45,25 +45,27 @@ public class Employee implements Comparable<Employee> {
 	}
 
 	@Override
-	public int compareTo(Employee obj1) {
-		return this.id.compareTo(obj1.id);
+	public int compareTo(Employee o) {
+		return this.getId().compareTo(o.getId());
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (o == null) {
+			return false;
+		}
+		if (!(o instanceof Employee)) {
+			return false;
+		}
+		Employee other = (Employee) o;
+
+		return this.id.equals(other.id);
 	}
 
 	@Override
-	public boolean equals(Object o) {
-		if (o == null)
-			return false;
-		if (o instanceof Employee)
-			return false;
-		Employee other = (Employee) o;
-		if(this.id == other.id)
-			System.out.print("id already existis");
-		 return false;
+	public int hashCode() {
+		return this.id.hashCode();
 	}
-
-	
-
-	
 
 	public Employee(String id, String name, String designation, Double salary) {
 		super();
@@ -80,5 +82,7 @@ public class Employee implements Comparable<Employee> {
 			return obj1.id.compareTo(obj2.id);
 		}
 	}
+
+	
 
 }
