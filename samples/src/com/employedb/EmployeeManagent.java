@@ -1,17 +1,14 @@
 package com.employedb;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class EmployeeManagent {
 	private static Scanner sc;
 
 	public static void main(String args[]) {
-		List<Employee> employess = new ArrayList<Employee>();
-		HashSet<Employee> set = new HashSet<Employee>(employess);
+		Set<Employee> set = new TreeSet<Employee>();
 		sc = new Scanner(System.in);
 		String id;
 		String name;
@@ -41,7 +38,6 @@ public class EmployeeManagent {
 
 				Employee db = new Employee(id, name, designation, salary);
 				set.add(db);
-				Collections.sort(employess, new Employee.ComparatorId());// default sorting using id
 			}
 				break;
 			case 2: {
@@ -61,8 +57,8 @@ public class EmployeeManagent {
 						s.setSalary(salary);
 					}
 				}
-				break;
 			}
+			break;
 			case 3: {
 				System.out.print("\nEnter EmployeeId to delete: ");
 				id = sc.next();
@@ -87,12 +83,12 @@ public class EmployeeManagent {
 			}
 			case 5: {
 				// Sort employee details(based on employee id) using comparable and display
-				Collections.sort(employess);
-				for (Employee s : employess) {
-					System.out.println(
-							"\n" + s.getId() + "\t " + s.getName() + "\t" + s.getDesignation() + "\t" + s.getSalary());
-				}
-				break;
+//				Collections.sort(employess);
+//				for (Employee s : employess) {
+//					System.out.println(
+//							"\n" + s.getId() + "\t " + s.getName() + "\t" + s.getDesignation() + "\t" + s.getSalary());
+//				}
+//				break;
 			}
 
 			case 6: { // Add get single employee details
@@ -100,6 +96,7 @@ public class EmployeeManagent {
 				id = sc.next();
 				for (Employee s : set) {
 					if (s.getId().equals(id)) {
+						System.out.println("ID" + "\t" + "NAME" + "\t" + "DESIGNATION" + "\t" + "SALARY");
 						System.out.println("\n" + s.getId() + "\t " + s.getName() + "\t" + s.getDesignation() + "\t"
 								+ s.getSalary());
 					}
